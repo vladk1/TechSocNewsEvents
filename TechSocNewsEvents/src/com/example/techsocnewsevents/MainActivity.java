@@ -29,7 +29,8 @@ import android.widget.TextView;
 	 	
 	 
 final static String URL = "http://api.twitter.com/1/statuses/user_timeline.json?screen_name=";
-final static String URLNews1 = "http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&q=http%3A%2F%2Fnews.google.com%2Fnews%3Foutput%3Drss%26num%3D8";
+final static String URLNews1 = "https://ajax.googleapis.com/ajax/services/search/news?" +
+                  "v=1.0&q=barack%20obama&userip=INSERT-USER-IP";
 
 	
 	@Override
@@ -49,7 +50,7 @@ final static String URLNews1 = "http://ajax.googleapis.com/ajax/services/feed/lo
 	
 	
 	new TweetPrint().execute("text");
-	new NewsPrint1().execute("responseData");
+	new NewsPrint1().execute("content");
 	}
 
 	
@@ -149,7 +150,7 @@ public class NewsPrint1 extends AsyncTask<String,Integer,String>
 		}catch (IOException e) {
 			e.printStackTrace();
 		}catch (JSONException e) {
-			e.printStackTrace();				
+			e.printStackTrace();//Log.e("log_tag", "Failed data was:\n" + result);		
 		}
 	
 	return null;
